@@ -12,16 +12,16 @@ Lorem ipsum
 - artifacts        # Contains artifacts from MLflow
 - mlflow.db        # Contains the local mlflow database
 - artifacts        # Contains logged artifacts
--- 1
---- 755fe68025a042e9b7ea21ba4768e44e
----- artifacts
+  - 1
+    - 755fe68025a042e9b7ea21ba4768e44e
+      - artifacts
 
 ### Scripts
 - src
--- pipeline.py      # Contains the Python pipeline data load, preparation, model training/testing (cf. HW3)
--- register.py      # Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
--- predict.py       # Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
--- monitor.XX       # Monitoring (cf. HW5)
+  - pipeline.py      # Contains the Python pipeline data load, preparation, model training/testing (cf. HW3)
+  - register.py      # Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
+  - predict.py       # Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
+  - monitor.XX       # Monitoring (cf. HW5)
 
 ### Orchestration
 - prefect.yaml     # Contains the .yaml file that stores this .git location to pull (cf. HW3)
@@ -30,7 +30,7 @@ Lorem ipsum
 ### Predict
 - Dockerfile       # Dockerfile for predict.py (cf. HW4)
 - outputs          # Contains predictions as parquet (cf. HW4)
--- predictions_<ID>.parquet (cf. HW4)
+  - predictions_<ID>.parquet (cf. HW4)
 
 ## Evaluation criteria
 * Problem description
