@@ -23,7 +23,7 @@ Lorem ipsum
       - 🚩artifacts
 
 ### Scripts
-- src
+- 🚩src
   - 🚩pipeline.py      # Contains the Python pipeline data load, preparation, model training/testing, monitoring (cf. HW3)
   - 🚩register.py      # Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
   - 🚩predict.py       # Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
