@@ -5,8 +5,8 @@ Lorem ipsum
 ## Project structure
 
 ### Environment
-- Pipfile
-- Pipfile.lock
+- Pipfile (cf. HW4)
+- Pipfile.lock (cf. HW4)
 
 ### MLflow
 - artifacts        # Contains artifacts from MLflow
@@ -56,11 +56,11 @@ Lorem ipsum
 * Model monitoring
     * [ ] 0 points: No model monitoring
     * [ ] 2 points: Basic model monitoring that calculates and reports metrics
-    * [x] 4 points: Comprehensive model monitoring that sends alerts or runs a conditional workflow (e.g. retraining, generating debugging dashboard, switching to a different model) if the defined metrics threshold is violated --> calculate report and send out email (prefect?) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
+    * [x] 4 points: Comprehensive model monitoring that sends alerts or runs a conditional workflow (e.g. retraining, generating debugging dashboard, switching to a different model) if the defined metrics threshold is violated --> calculate report and send out email (prefect?) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage (cf. HW5)
 * Reproducibility
     * [ ] 0 points: No instructions on how to run the code at all, the data is missing
     * [ ] 2 points: Some instructions are there, but they are not complete OR instructions are clear and complete, the code works, but the data is missing
-    * [x] 4 points: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified. --> Use pipenv
+    * [x] 4 points: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified. --> Use pipenv (cf. HW4)
 * Best practices
     * [x] There are unit tests (1 point) --> HW6???
     * [x] There is an integration test (1 point) --> HW6???
