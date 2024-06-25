@@ -34,14 +34,15 @@ Lorem ipsum
 - 🚩deployment.yaml  # Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
 
 ### Predict
-- 🚩Dockerfile       # Dockerfile for predict.py (cf. HW4)
-- 🚩outputs          # Contains predictions as parquet (cf. HW4)
+- 🚩Dockerfile       #Dockerfile for predict.py (cf. HW4)
+- 🚩outputs          #Contains predictions as parquet (cf. HW4)
   - 🚩predictions_<ID>.parquet (cf. HW4)
  
 ### Tests
-- 🚩tests
-  - 🚩__init__.py                    # init file
-  - 🚩test_data_preparation .py      # Unit tests for data preparation (cf. HW 6.1-6.3)
+- 🚩unit-tests
+  - 🚩__init__.py                    #init file
+  - 🚩test_data_preparation .py      #Unit tests for data preparation (cf. HW 6.1-6.3)
+- 🚩integration-tests #Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
 
 ## Evaluation criteria
 * Problem description
