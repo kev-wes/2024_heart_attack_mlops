@@ -15,34 +15,34 @@ Lorem ipsum
 - 🚩Pipfile.lock (cf. HW4)
 
 ### MLflow
-- 🚩artifacts        # Contains artifacts from MLflow
-- 🚩mlflow.db        # Contains the local mlflow database
-- 🚩artifacts        # Contains logged artifacts
+- 🚩artifacts: Contains artifacts from MLflow
+- 🚩mlflow.db: Contains the local mlflow database
+- 🚩artifacts: Contains logged artifacts
   - 🚩1
     - 🚩755fe68025a042e9b7ea21ba4768e44e
       - 🚩artifacts
 
 ### Scripts
 - 🚩src
-  - 🚩pipeline.py      # Contains the Python pipeline data load, preparation, model training/testing, monitoring (cf. HW3)
-  - 🚩register.py      # Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
-  - 🚩predict.py       # Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
-  - 🚩monitor.py       # Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
+  - 🚩pipeline.py: Contains the Python pipeline data load, preparation, model training/testing, monitoring (cf. HW3)
+  - 🚩register.py: Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
+  - 🚩predict.py: Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
+  - 🚩monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
 
 ### Orchestration
-- 🚩prefect.yaml     # Contains the .yaml file that stores this .git location to pull (cf. HW3)
-- 🚩deployment.yaml  # Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
+- 🚩prefect.yaml: Contains the .yaml file that stores this .git location to pull (cf. HW3)
+- 🚩deployment.yaml: Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
 
 ### Predict
-- 🚩Dockerfile       #Dockerfile for predict.py (cf. HW4)
-- 🚩outputs          #Contains predictions as parquet (cf. HW4)
+- 🚩Dockerfile: #Dockerfile for predict.py (cf. HW4)
+- 🚩outputs: Contains predictions as parquet (cf. HW4)
   - 🚩predictions_<ID>.parquet (cf. HW4)
  
 ### Tests
 - 🚩unit-tests
-  - 🚩__init__.py                    #init file
-  - 🚩test_data_preparation .py      #Unit tests for data preparation (cf. HW 6.1-6.3)
-- 🚩integration-tests #Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
+  - 🚩__init__.py: init file
+  - 🚩test_data_preparation.py: Unit tests for data preparation (cf. HW 6.1-6.3)
+- 🚩integration-tests: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
 
 ## Evaluation criteria
 * Problem description
