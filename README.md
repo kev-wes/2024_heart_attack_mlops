@@ -84,7 +84,7 @@ Lorem ipsum
     * [x] There are unit tests (1 point) 
       * 🚩 cf. HW6.1 to 6.3 and video 6.1. Create unit tests for data preparation script.
     * [x] There is an integration test (1 point) 
-      * 🚩 cf. HW6.4 to 6.6 and video 6.2-6.3. ???
+      * 🚩 cf. HW6.4 to 6.6 and video 6.2-6.3. Create integration test for application.
     * [x] Linter and/or code formatter are used (1 point) 
       * 🚩 cf. video 6.4. ???
     * [x] There's a Makefile (1 point) 
