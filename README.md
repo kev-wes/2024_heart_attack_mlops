@@ -42,7 +42,7 @@ Lorem ipsum
 - 🚩unit-tests
   - 🚩__init__.py: init file
   - 🚩test_data_preparation.py: Unit tests for data preparation (cf. HW 6.1-6.3)
-- 🚩integration-tests: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
+  - 🚩integration-test.py: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
 
 ## Evaluation criteria
 * Problem description
