@@ -9,8 +9,11 @@ Lorem ipsum
 2. Install pipenv 'pip install pipenv'
 3. Install dependencies 'pipenv install'
 4. Activate environment 'pipenv shell'
+
+#### ToDo! Implement these all in docker!!
 5. Start MLflow server 'mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts'
 6. Start prefect server 'prefect server start'
+
 
 ## Project structure
 
@@ -79,7 +82,7 @@ Lorem ipsum
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
     * [x] 4 points: The model deployment code is containerized and could be deployed to cloud or special tools for model deployment are used 
-      * 🚩 containerize model like HW4
+      * 🚩 containerize model like HW4.
 * Model monitoring
     * [ ] 0 points: No model monitoring
     * [ ] 2 points: Basic model monitoring that calculates and reports metrics
@@ -89,7 +92,7 @@ Lorem ipsum
     * [ ] 0 points: No instructions on how to run the code at all, the data is missing
     * [ ] 2 points: Some instructions are there, but they are not complete OR instructions are clear and complete, the code works, but the data is missing
     * [x] 4 points: Instructions are clear, it's easy to run the code, and it works. The versions for all the dependencies are specified. 
-      * ✅ I used pipenv so that all versions for all dependencies are specified. Additionally I provide instructions to run the code above.
+      * 🟠 I used pipenv so that all versions for all dependencies are specified. Additionally I provide instructions to run the code above. ToDo: Bundle everything in Docker to make startup easy.
 * Best practices
     * [x] There are unit tests (1 point) 
       * 🚩 cf. HW6.1 to 6.3 and video 6.1. Create unit tests for data preparation script.
