@@ -1,6 +1,15 @@
 # Capstone Project for the MLOps Zoomcamp
 ## Problem description
 
+## Instructions to start project
+1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
+#### Always stay in the root dir!
+2. Install pipenv 'pip install pipenv'
+3. Install dependencies 'pipenv install'
+4. Activate environment 'pipenv shell'
+5. Start MLflow server 'mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts'
+6. Start prefect server 'prefect server start'
+
 ### Legend
 - 🚩 = ToDo
 - 🟠 = WIP
@@ -10,9 +19,14 @@ Lorem ipsum
 
 ## Project structure
 
+### Data
+- ✅ data
+  - ✅ heart.csv
+
 ### Environment
-- 🚩Pipfile (cf. HW4)
-- 🚩Pipfile.lock (cf. HW4)
+- ✅ .gitignore
+- ✅Pipfile (cf. HW4)
+- ✅Pipfile.lock (cf. HW4)
 
 ### MLflow
 - 🚩artifacts: Contains artifacts from MLflow
@@ -23,10 +37,10 @@ Lorem ipsum
       - 🚩artifacts
 
 ### Scripts
-- 🚩src
-  - 🚩pipeline.py: Contains the Python pipeline data load, preparation, model training/testing, monitoring (cf. HW3)
-  - 🚩register.py: Contains script to register best model after training / Optional Build Docker Container (cf. HW2)
-  - 🚩predict.py: Takes the registered model and uses it for prediction / Alternatively Run Docker Container (cf. HW4)
+- 🟠src
+  - 🟠register.py: Contains script to hyperparameter tune and register best model after training / Optional Build Docker Container (cf. HW2). TODO: HPO
+  - 🟠pipeline.py: Contains the Python pipeline data load, preparation, model training/testing using the optimal model registered before. TODO: Store final model locally.  
+  - 🚩predict.py: Takes the stored model before and uses it for prediction. Provides a webservice that allows to input X_values and returns the risk of heart attack (cf. HW4)
   - 🚩monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
 
 ### Orchestration
