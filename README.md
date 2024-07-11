@@ -5,12 +5,11 @@ Lorem ipsum
 
 ## Instructions to start project
 1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
-#### Always stay in the root dir!
+
+#### ToDo! Implement these all in docker!!
 2. Install pipenv 'pip install pipenv'
 3. Install dependencies 'pipenv install'
 4. Activate environment 'pipenv shell'
-
-#### ToDo! Implement these all in docker!!
 5. Start MLflow server 'mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts'
 6. Start prefect server 'prefect server start'
 
