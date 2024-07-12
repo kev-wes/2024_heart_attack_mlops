@@ -19,6 +19,12 @@ Lorem ipsum
 11. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
 12. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
+#### For monitoring (only Gmail supported!)
+1. Register app password under https://myaccount.google.com/apppasswords
+2. Create new prefect block with your email address and app password 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password'
+3. Deploy monitoring flow 'prefect deploy src/monitor.py:main_flow -n monitor-heart-attack-data-drift -p zoompool'
+4. Create a schedule or monitor dataset ad hoc 'prefect deployment run 'main-flow/monitor-heart-attack-data-drift' -p recipient='kevin.wesendrup@uni-muenster.de'' 
+
 
 
 ## Project structure
@@ -52,6 +58,7 @@ Lorem ipsum
   - ✅ templates/: Stores the template used by the Flask app.
     - ✅ index.html: Simple web form for heart attack risk prediction.
   - 🚩 monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
+  - ✅ create_email_block.py: Python helper to create a prefect email block to send monitoring alerts.
 
 ### Tests
 - 🚩 unit-tests/

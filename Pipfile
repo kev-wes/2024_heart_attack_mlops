@@ -13,6 +13,9 @@ datetime = "*"
 hyperopt = "*"
 flask = "*"
 gunicorn = "*"
+prefect-email = "*"
+evidently = "*"
+argparse = "*"
 
 [dev-packages]
 
