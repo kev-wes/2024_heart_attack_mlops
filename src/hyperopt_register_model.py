@@ -12,6 +12,8 @@ from mlflow.tracking import MlflowClient  # Interface to interact with the MLflo
 from mlflow.entities import ViewType  # To specify the view type for querying runs
 
 from prefect import task, flow  # Prefect for building and orchestrating workflows
+from prefect.artifacts import create_markdown_artifact
+from datetime import date
 
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe  # Hyperopt for hyperparameter optimization
 from hyperopt.pyll import scope  # Scope for specifying hyperparameter types
@@ -88,7 +90,7 @@ def run_optimization(num_trials: int,
         rstate=rstate
     )
 
-
+@task
 def register_model():
     """
     Register the best model found during hyperparameter optimization to MLflow.
@@ -107,7 +109,15 @@ def register_model():
     best_run_id = best_run.info.run_id  # Get the ID of the best run
     model_uri = f"runs:/{best_run_id}/model"  # URI to the best model artifact
     mlflow.register_model(model_uri, "BestSupportVectorClassifier")  # Register the best model
-    print(f"Registered best model (run_id: {best_run_id}) with a test acc of {best_run.data.metrics['acc']}.")
+    markdown_report = f"""# Model Registration
+
+    ## Summary
+
+    f"Registered best model (run_id: {best_run_id}) with a test acc of {best_run.data.metrics['acc']}."""
+
+    create_markdown_artifact(
+        key="heart-attack-hyper-opt-report", markdown=markdown_report
+    )
 
 
 @flow

@@ -1,0 +1,5 @@
+pull:
+   - prefect.deployments.steps.git_clone:
+       repository: https://github.com/kev-wes/2024_heart_attack_mlops.git
+       branch: main
+       access_token: null
