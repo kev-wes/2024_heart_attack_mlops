@@ -1,7 +1,13 @@
 # Capstone Project for the MLOps Zoomcamp: Predicting Heart Attack Risks
+
+## Legend
+- 🚩 = ToDo
+- 🟠 = WiP
+- ✅ = Implemented fully
+
 ## Problem description
 
-Lorem ipsum
+🚩 Lorem ipsum
 
 ## Instructions to start project
 1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
@@ -19,20 +25,15 @@ Lorem ipsum
 11. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
 12. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
-#### For monitoring (only Gmail supported!)
+#### For monitoring (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
 2. Create new prefect block with your email address and app password 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password'
 3. Deploy monitoring flow 'prefect deploy src/monitor.py:main_flow -n monitor-heart-attack-data-drift -p zoompool'
-4. Create a schedule or monitor dataset ad hoc 'prefect deployment run 'main-flow/monitor-heart-attack-data-drift' -p recipient='kevin.wesendrup@uni-muenster.de'' 
-
-
+4. Create a schedule or monitor dataset ad hoc 'prefect deployment run 'main-flow/monitor-heart-attack-data-drift' -p recipient='recipient@any-provider.com'' 
 
 ## Project structure
 
-### Legend
-- 🚩 = ToDo
-- 🟠 = WiP
-- ✅ = Implemented fully
+
 
 ### Data
 - ✅ data/: Contains all data.
@@ -51,13 +52,13 @@ Lorem ipsum
 - ✅ mlflow.db: Contains the local mlflow database. Ignored by .gitignore, built during runtime!
 
 ### Scripts
-- 🟠 src/
+- ✅ src/
   - ✅ hyperopt_register_model.py: This script performs automated hyperparameter optimization for a Support Vector Classifier (SVC) using Hyperopt. It utilizes MLflow for experiment tracking and model management, logging metrics and registering the best model found. The workflow, orchestrated with Prefect, includes data loading, preprocessing, scaling, and evaluating SVC models on a heart attack prediction dataset.
   - ✅ helper.py: The code defines a data preprocessing pipeline for a machine learning project using Prefect for workflow management. It includes tasks for reading a dataset, removing duplicates, splitting features and targets, splitting data into training and testing sets, and scaling features using standardization. 
   - ✅ app.py: Hosts a Flask prediction web service over http://localhost:8000/. Takes the best model registered before and uses it for prediction.
   - ✅ templates/: Stores the template used by the Flask app.
     - ✅ index.html: Simple web form for heart attack risk prediction.
-  - 🚩 monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
+  - ✅ monitor.py: Calculates metrics between current data (data/heart.csv) and reference data set (data/reference.csv) and sends out email.
   - ✅ create_email_block.py: Python helper to create a prefect email block to send monitoring alerts.
 
 ### Tests
@@ -86,7 +87,7 @@ Lorem ipsum
     * [ ] 0 points: No workflow orchestration
     * [ ] 2 points: Basic workflow orchestration
     * [x] 4 points: Fully deployed workflow  
-      * ✅ I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization and model registration. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report.
+      * ✅ I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization and model registration. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report as artifact.
 * Model deployment
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
@@ -96,7 +97,7 @@ Lorem ipsum
     * [ ] 0 points: No model monitoring
     * [ ] 2 points: Basic model monitoring that calculates and reports metrics
     * [x] 4 points: Comprehensive model monitoring that sends alerts or runs a conditional workflow (e.g. retraining, generating debugging dashboard, switching to a different model) if the defined metrics threshold is violated 
-      * 🚩 Calculate report and send out email (prefect?) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage (cf. HW5)} 
+      * ✅ I calculate dataset drift metrics between current data (data/heart.csv) and reference data set (data/reference.csv) and send out an email alert.
 * Reproducibility
     * [ ] 0 points: No instructions on how to run the code at all, the data is missing
     * [ ] 2 points: Some instructions are there, but they are not complete OR instructions are clear and complete, the code works, but the data is missing
