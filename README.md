@@ -16,6 +16,8 @@ Lorem ipsum
 8. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
 9. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
+
+
 ## Project structure
 
 ### Legend
@@ -31,10 +33,13 @@ Lorem ipsum
 - ✅ .gitignore: Contains all files and directories that should be ignored for GitHub commits.
 - ✅ Pipfile: Contains the dependencies.
 - ✅ Pipfile.lock: Contains the exact versions of all dependencies and their dependencies.
+- 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
+- 🚩 prefect.yaml: Contains the .yaml file that stores this .git location to pull (cf. HW3)
+- 🚩 deployment.yaml: Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
 
 ### MLflow
-- ✅ artifacts: Contains artifacts from MLflow.
-- ✅ mlflow.db: Contains the local mlflow database.
+- ✅ artifacts: Contains artifacts from MLflow. Ignored by .gitignore, built during runtime!
+- ✅ mlflow.db: Contains the local mlflow database. Ignored by .gitignore, built during runtime!
 
 ### Scripts
 - 🟠 src/
@@ -45,15 +50,6 @@ Lorem ipsum
     - ✅ index.html: Simple web form for heart attack risk prediction.
   - 🚩 monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
 
-### Orchestration
-- 🚩 prefect.yaml: Contains the .yaml file that stores this .git location to pull (cf. HW3)
-- 🚩 deployment.yaml: Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
-
-### Predict
-- 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
-- 🚩 outputs/: Contains predictions as parquet (cf. HW4)
-  - 🚩 predictions_<ID>.parquet (cf. HW4)
- 
 ### Tests
 - 🚩 unit-tests/
   - 🚩 __init__.py: init file
@@ -85,7 +81,7 @@ Lorem ipsum
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
     * [x] 4 points: The model deployment code is containerized and could be deployed to cloud or special tools for model deployment are used 
-      * 🟠 I hosted the model as a webservice. ToDo: containerize model using Docker like HW4.
+      * 🟠 I hosted the model as a webservice that is reachable under 'localhost:8000'. ToDo: containerize model using Docker like HW4.
 * Model monitoring
     * [ ] 0 points: No model monitoring
     * [ ] 2 points: Basic model monitoring that calculates and reports metrics
