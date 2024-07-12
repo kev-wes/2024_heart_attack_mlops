@@ -87,7 +87,7 @@
     * [ ] 0 points: No workflow orchestration
     * [ ] 2 points: Basic workflow orchestration
     * [x] 4 points: Fully deployed workflow  
-      * ✅ I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization and model registration. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report as artifact.
+      * ✅ I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization, model registration, and monitoring. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report as artifact.
 * Model deployment
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
