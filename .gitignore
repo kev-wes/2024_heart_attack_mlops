@@ -1,5 +1,7 @@
-# Ignore artifacts folder
+# Ignore folders
 artifacts/
+mlruns/
+src/__pycache__/
 
-# Ignore mlflow.db file
+# Ignore files
 mlflow.db

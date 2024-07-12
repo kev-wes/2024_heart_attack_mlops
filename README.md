@@ -12,17 +12,19 @@ Lorem ipsum
 4. Activate environment 'pipenv shell'
 5. Start MLflow server 'mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts'
 6. Start prefect server 'prefect server start'
-
+7. Train heart attack classifier 'python src/hyperopt_register_model.py'
+8. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
+9. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
 ## Project structure
 
 ### Legend
 - 🚩 = ToDo
-- 🟠 = WIP
+- 🟠 = WiP
 - ✅ = Implemented fully
 
 ### Data
-- ✅ data: Contains all data.
+- ✅ data/: Contains all data.
   - ✅ heart.csv: The training and test data for heart attack prediction.
 
 ### Environment
@@ -35,10 +37,12 @@ Lorem ipsum
 - ✅ mlflow.db: Contains the local mlflow database.
 
 ### Scripts
-- 🟠 src
+- 🟠 src/
   - ✅ hyperopt_register_model.py: This script performs automated hyperparameter optimization for a Support Vector Classifier (SVC) using Hyperopt. It utilizes MLflow for experiment tracking and model management, logging metrics and registering the best model found. The workflow, orchestrated with Prefect, includes data loading, preprocessing, scaling, and evaluating SVC models on a heart attack prediction dataset.
   - ✅ helper.py: The code defines a data preprocessing pipeline for a machine learning project using Prefect for workflow management. It includes tasks for reading a dataset, removing duplicates, splitting features and targets, splitting data into training and testing sets, and scaling features using standardization. 
-  - 🟠 predict.py: Takes the best model registered before and uses it for prediction. ToDo: Provide a webservice that allows to input X_values and returns the risk of heart attack (cf. HW4)!
+  - ✅ app.py: Hosts a Flask prediction web service over http://localhost:8000/. Takes the best model registered before and uses it for prediction.
+  - ✅ templates/: Stores the template used by the Flask app.
+    - ✅ index.html: Simple web form for heart attack risk prediction.
   - 🚩 monitor.py: Calculates metrics between current data and reference data set periodically / Sends out email / Use prefect? (cf. HW5) / cf. evidently_metrics_calculation.py for Prefect implementation with database storage
 
 ### Orchestration
@@ -47,11 +51,11 @@ Lorem ipsum
 
 ### Predict
 - 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
-- 🚩 outputs: Contains predictions as parquet (cf. HW4)
+- 🚩 outputs/: Contains predictions as parquet (cf. HW4)
   - 🚩 predictions_<ID>.parquet (cf. HW4)
  
 ### Tests
-- 🚩 unit-tests
+- 🚩 unit-tests/
   - 🚩 __init__.py: init file
   - 🚩 test_data_preparation.py: Unit tests for data preparation (cf. HW 6.1-6.3)
   - 🚩 integration-test.py: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
@@ -76,12 +80,12 @@ Lorem ipsum
     * [ ] 0 points: No workflow orchestration
     * [ ] 2 points: Basic workflow orchestration
     * [x] 4 points: Fully deployed workflow  
-      * 🟠 I added @task and @flow decorators. ToDo: Deploy model like HW3 (deploy, email message when training finished.)
+      * 🟠 I added @task and @flow decorators.
 * Model deployment
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
     * [x] 4 points: The model deployment code is containerized and could be deployed to cloud or special tools for model deployment are used 
-      * 🚩 containerize model like HW4.
+      * 🟠 I hosted the model as a webservice. ToDo: containerize model using Docker like HW4.
 * Model monitoring
     * [ ] 0 points: No model monitoring
     * [ ] 2 points: Basic model monitoring that calculates and reports metrics

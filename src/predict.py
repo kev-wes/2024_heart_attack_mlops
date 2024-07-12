@@ -15,6 +15,7 @@ def predict(X_test, y_test):
 def main_flow():
     mlflow.set_tracking_uri("http://localhost:5000")
     data = hlp.read_data()
+    print(data)
     preprocessed_data = hlp.preprocess_data(data)
     X, y = hlp.split_x_y(preprocessed_data)
     _, X_test, _, y_test = hlp.split_train_test(X, y)

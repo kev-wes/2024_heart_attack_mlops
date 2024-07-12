@@ -4,6 +4,7 @@ import numpy as np
 import helper as hlp  # Custom module for helper functions
 
 from sklearn.svm import SVC  # For the Support Vector Classifier model
+from sklearn.preprocessing import StandardScaler  # For scaling the data
 from sklearn.metrics import accuracy_score  # For evaluating the accuracy of the model
 
 import mlflow  # MLflow for experiment tracking and model management
@@ -15,13 +16,17 @@ from prefect import task, flow  # Prefect for building and orchestrating workflo
 from hyperopt import STATUS_OK, Trials, fmin, hp, tpe  # Hyperopt for hyperparameter optimization
 from hyperopt.pyll import scope  # Scope for specifying hyperparameter types
 
+import joblib # For saving and loading the scaler
+import os
+
 
 @task
 def run_optimization(num_trials: int,
                      X_train: pd.DataFrame,
                      X_test: pd.DataFrame,
                      y_train: pd.DataFrame,
-                     y_test: pd.DataFrame):
+                     y_test: pd.DataFrame,
+                     scaler: StandardScaler):
     """
     Perform hyperparameter optimization for Support Vector Classifier using Hyperopt.
 
@@ -51,6 +56,13 @@ def run_optimization(num_trials: int,
             acc = accuracy_score(y_test, y_pred)  # Calculate accuracy
             mlflow.log_params(params)  # Log hyperparameters
             mlflow.log_metric("acc", acc)  # Log accuracy
+
+            # Save the scaler as an artifact
+            joblib.dump(scaler, "src/scaler.pkl")
+            mlflow.log_artifact("src/scaler.pkl", "scaler")
+            # After logging, you can delete the local file
+            os.remove("src/scaler.pkl")
+
             # Since we want to maximize accuracy, we minimize the negative accuracy
             return {'loss': -acc, 'status': STATUS_OK}
 
@@ -67,7 +79,7 @@ def run_optimization(num_trials: int,
     rstate = np.random.default_rng(42)  # Random number generator for reproducible results
 
     # Perform hyperparameter optimization
-    best_params = fmin(
+    fmin(
         fn=objective,
         space=search_space,
         algo=tpe.suggest,
@@ -117,9 +129,10 @@ def main_flow():
     preprocessed_data = hlp.preprocess_data(data)
     X, y = hlp.split_x_y(preprocessed_data)
     X_train, X_test, y_train, y_test = hlp.split_train_test(X, y)
-    X_test = hlp.scale_data(X_test)  # Scale test data
-    X_train = hlp.scale_data(X_train)  # Scale train data
-    run_optimization(10, X_train, X_test, y_train, y_test)  # Perform hyperparameter optimization
+    X_test, _ = hlp.scale_data(X_test, None)  # Scale test data
+    X_train, scaler = hlp.scale_data(X_train, None)  # Scale train data
+    
+    run_optimization(10, X_train, X_test, y_train, y_test, scaler)  # Perform hyperparameter optimization
     register_model()  # Register the best model found
 
 

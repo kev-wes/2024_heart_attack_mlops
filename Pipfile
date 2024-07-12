@@ -11,6 +11,8 @@ prefect = "*"
 mlflow = "*"
 datetime = "*"
 hyperopt = "*"
+flask = "*"
+gunicorn = "*"
 
 [dev-packages]
 

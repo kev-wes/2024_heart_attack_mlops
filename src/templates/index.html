@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Risk Prediction</title>
+</head>
+<body>
+    <h1>Heart Attack Risk Prediction</h1>
+    <form method="post">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="sex">Sex (1 = male; 0 = female):</label>
+        <input type="number" name="sex" required><br>
+
+        <label for="cp">Chest Pain Type (0-3):</label>
+        <input type="number" name="cp" required><br>
+
+        <label for="trtbps">Resting Blood Pressure:</label>
+        <input type="number" name="trtbps" required><br>
+
+        <label for="chol">Serum Cholesterol in mg/dl:</label>
+        <input type="number" name="chol" required><br>
+
+        <label for="fbs">Fasting Blood Sugar > 120 mg/dl (1 = true; 0 = false):</label>
+        <input type="number" name="fbs" required><br>
+
+        <label for="restecg">Resting Electrocardiographic Results (0-2):</label>
+        <input type="number" name="restecg" required><br>
+
+        <label for="thalachh">Maximum Heart Rate Achieved:</label>
+        <input type="number" name="thalachh" required><br>
+
+        <label for="exng">Exercise Induced Angina (1 = yes; 0 = no):</label>
+        <input type="number" name="exng" required><br>
+
+        <label for="oldpeak">ST Depression Induced by Exercise Relative to Rest:</label>
+        <input type="number" step="0.1" name="oldpeak" required><br>
+
+        <label for="slp">Slope of the Peak Exercise ST Segment (0-2):</label>
+        <input type="number" name="slp" required><br>
+
+        <label for="caa">Number of Major Vessels Colored by Flourosopy (0-3):</label>
+        <input type="number" name="caa" required><br>
+
+        <label for="thall">Thalassemia (1 = normal; 2 = fixed defect; 3 = reversible defect):</label>
+        <input type="number" name="thall" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction is not none %}
+        <h2>Prediction: {{ prediction }}</h2>
+        <p>{{ 'You have a risk of heart attack' if prediction == 1 else 'You do not have a risk of heart attack' }}</p>
+    {% endif %}
+</body>
+</html>
