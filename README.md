@@ -12,9 +12,12 @@ Lorem ipsum
 4. Activate environment 'pipenv shell'
 5. Start MLflow server 'mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./artifacts'
 6. Start prefect server 'prefect server start'
-7. Train heart attack classifier 'python src/hyperopt_register_model.py'
-8. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
-9. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
+7. Create prefect workpool 'prefect work-pool create --type process zoompool'
+8. Deploy training flow 'prefect deploy src/hyperopt_register_model.py:main_flow -n train-heart-attack-model -p zoompool'
+9. Start worker 'prefect worker start --pool 'zoompool''
+10. Hyperparam tune, train, and register model 'prefect deployment run 'main-flow/train-heart-attack-model''
+11. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
+12. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
 
 
@@ -33,9 +36,10 @@ Lorem ipsum
 - ✅ .gitignore: Contains all files and directories that should be ignored for GitHub commits.
 - ✅ Pipfile: Contains the dependencies.
 - ✅ Pipfile.lock: Contains the exact versions of all dependencies and their dependencies.
-- 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
 - 🚩 prefect.yaml: Contains the .yaml file that stores this .git location to pull (cf. HW3)
 - 🚩 deployment.yaml: Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
+
+- 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
 
 ### MLflow
 - ✅ artifacts: Contains artifacts from MLflow. Ignored by .gitignore, built during runtime!
