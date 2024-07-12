@@ -112,8 +112,7 @@ def register_model():
     markdown_report = f"""# Model Registration
 
     ## Summary
-
-    f"Registered best model (run_id: {best_run_id}) with a test acc of {best_run.data.metrics['acc']}."""
+    Registered best model (run_id: {best_run_id}) with a test acc of {best_run.data.metrics['acc']}."""
 
     create_markdown_artifact(
         key="heart-attack-hyper-opt-report", markdown=markdown_report
