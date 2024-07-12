@@ -36,8 +36,7 @@ Lorem ipsum
 - ✅ .gitignore: Contains all files and directories that should be ignored for GitHub commits.
 - ✅ Pipfile: Contains the dependencies.
 - ✅ Pipfile.lock: Contains the exact versions of all dependencies and their dependencies.
-- 🚩 prefect.yaml: Contains the .yaml file that stores this .git location to pull (cf. HW3)
-- 🚩 deployment.yaml: Contains three deployment for pipeline.py, register.py, and predict.py (cf. HW3)
+- ✅ prefect.yaml: Contains the .yaml file that stores this .git location to pull.
 
 - 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
 
@@ -68,7 +67,7 @@ Lorem ipsum
       * 🚩 Describe problem well
 * Cloud
     * [x] 0 points: Cloud is not used, things run only locally
-      * 🚩 Host local on ubuntu server
+      * ✅ Everything is hosted locally on an ubuntu server. It can be hosted anywhere on premise and can be accessed outsidem, but it does not use cloud or IaC tools.
     * [ ] 2 points: The project is developed on the cloud OR uses localstack (or similar tool) OR the project is deployed to Kubernetes or similar container management platforms
     * [ ] 4 points: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 * Experiment tracking and model registry
@@ -80,7 +79,7 @@ Lorem ipsum
     * [ ] 0 points: No workflow orchestration
     * [ ] 2 points: Basic workflow orchestration
     * [x] 4 points: Fully deployed workflow  
-      * 🟠 I added @task and @flow decorators.
+      * ✅ I used prefect for workflow orchestration (cf. course material from 2023). Unfortunately, Mage did not work for me. I added @task and @flow decorators to my code. I also created a prefect deployment for hyperparameter optimization and model registration. Additionally I created a workpool with one worker that automatically starts a hyperparameter optimization and model registration run. Each run, returns a markdown report.
 * Model deployment
     * [ ] 0 points: Model is not deployed
     * [ ] 2 points: Model is deployed but only locally
