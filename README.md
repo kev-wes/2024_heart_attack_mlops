@@ -7,7 +7,7 @@
 
 ## Problem description
 
-🚩 Lorem ipsum
+🚩 Lorem ipsum 🚩
 
 ## Instructions for use
 1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
@@ -33,7 +33,7 @@
 
 #### For testing
 1. Unit test: 'pytest tests/unit_test.py'
-2. Integration test: 
+2. Integration test: 🚩
 
 ## Project structure explained
 
@@ -68,7 +68,7 @@
   - ✅ __init__.py: init file for testing.
   - ✅ unit_test.py: Unit tests for data preprocessing. Tests the function 'preprocess_data' that is stored in src/helper.py and is used for training (hyperopt_register_model.py) and prediction (app.py).
   - 🚩 integration-test.py: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
-  - ✅ run.sh
+  - 🚩 run.sh
 
 ## Evaluation criteria
 * Problem description
@@ -108,14 +108,14 @@
       * 🟠 I used pipenv so that all versions for all dependencies are specified. Additionally I provide instructions to run the code above. ToDo: Bundle everything in Docker to make startup easy.
 * Best practices
     * [x] There are unit tests (1 point) 
-      * 🚩 cf. HW6.1 to 6.3 and video 6.1. Create unit tests for data preparation script.
+      * ✅ I created a unit test for data preprocessing. 'tests/unit_test' tests the function 'preprocess_data' that is stored in 'src/helper.py' and is used for training ('hyperopt_register_model.py') and prediction ('app.py').
     * [x] There is an integration test (1 point) 
       * 🚩 cf. HW6.4 to 6.6 and video 6.2-6.3. Create integration test for application.
-    * [x] Linter and/or code formatter are used (1 point) 
-      * 🚩 cf. video 6.4. ???
-    * [x] There's a Makefile (1 point) 
-      * 🚩 cf. video 6.5. ???
-    * [x] There are pre-commit hooks (1 point) 
-      * 🚩 cf. video 6.6. ???
-    * [x] There's a CI/CD pipeline (2 points) 
-      * 🚩 cf. video 6B.5-6B.7. ???
+    * [ ] Linter and/or code formatter are used (1 point) 
+      * I do not use linter or code formatter.
+    * [ ] There's a Makefile (1 point) 
+      * I do not use a Makefile.
+    * [ ] There are pre-commit hooks (1 point) 
+      * I do not use pre-commit hooks.
+    * [ ] There's a CI/CD pipeline (2 points) 
+      * I do not have a CI/CD pipeline.
