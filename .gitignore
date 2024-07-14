@@ -4,6 +4,7 @@ mlruns/
 src/__pycache__/
 tests/__pycache__
 tests/.pytest_cache
+.pytest_cache/
 
 # Ignore files
 mlflow.db
