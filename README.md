@@ -9,7 +9,7 @@
 
 🚩 Lorem ipsum
 
-## Instructions to start project
+## Instructions for use
 1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
 
 #### ToDo! Implement these all in docker!!
@@ -31,9 +31,11 @@
 3. Deploy monitoring flow 'prefect deploy src/monitor.py:main_flow -n monitor-heart-attack-data-drift -p zoompool'
 4. Create a schedule or monitor dataset ad hoc 'prefect deployment run 'main-flow/monitor-heart-attack-data-drift' -p recipient='recipient@any-provider.com'' 
 
-## Project structure
+#### For testing
+1. Unit test: 'pytest tests/unit_test.py'
+2. Integration test: 
 
-
+## Project structure explained
 
 ### Data
 - ✅ data/: Contains all data.
@@ -62,10 +64,11 @@
   - ✅ create_email_block.py: Python helper to create a prefect email block to send monitoring alerts.
 
 ### Tests
-- 🚩 unit-tests/
-  - 🚩 __init__.py: init file
-  - 🚩 test_data_preparation.py: Unit tests for data preparation (cf. HW 6.1-6.3)
+- 🟠 tests/: Contains a unit and an integration test.
+  - ✅ __init__.py: init file for testing.
+  - ✅ unit_test.py: Unit tests for data preprocessing. Tests the function 'preprocess_data' that is stored in src/helper.py and is used for training (hyperopt_register_model.py) and prediction (app.py).
   - 🚩 integration-test.py: Integration test (cf. HW 6.4-6.6 / video 6.2 & 6.3)
+  - ✅ run.sh
 
 ## Evaluation criteria
 * Problem description
@@ -75,7 +78,7 @@
       * 🚩 Describe problem well
 * Cloud
     * [x] 0 points: Cloud is not used, things run only locally
-      * ✅ Everything is hosted locally on an ubuntu server. It can be hosted anywhere on premise and can be accessed outsidem, but it does not use cloud or IaC tools.
+      * ✅ Everything is hosted locally on an ubuntu server. It can be hosted anywhere on premise and can be accessed outside through the hosted web services, but it does not use cloud or IaC tools.
     * [ ] 2 points: The project is developed on the cloud OR uses localstack (or similar tool) OR the project is deployed to Kubernetes or similar container management platforms
     * [ ] 4 points: The project is developed on the cloud and IaC tools are used for provisioning the infrastructure
 * Experiment tracking and model registry
