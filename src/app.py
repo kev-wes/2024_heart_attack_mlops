@@ -13,7 +13,7 @@ import helper as hlp
 
 app = Flask(__name__)
 
-mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_tracking_uri("http://mlflow:5000")
 client = MlflowClient()
 
 
