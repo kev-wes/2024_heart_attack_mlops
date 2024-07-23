@@ -15,16 +15,9 @@ app = Flask(__name__)
 
 mlflow.set_tracking_uri("http://localhost:5000")
 client = MlflowClient()
-latest_model_version = client.get_latest_versions("BestSupportVectorClassifier")[0]
 
-# Load the model
-model = mlflow.sklearn.load_model(f"models:/BestSupportVectorClassifier/{latest_model_version.version}")
 
-# Load the scaler artifact
-scaler_path = mlflow.artifacts.download_artifacts(f"runs:/{latest_model_version.run_id}/scaler/scaler.pkl")
-scaler = joblib.load(scaler_path)
-
-def preprocess_input(data):
+def preprocess_input(data, scaler):
     """
     This function includes the necessary preprocessing steps
     """
@@ -55,8 +48,17 @@ def index():
             'thall': int(request.form['thall'])
         }
         
+        latest_model_version = client.get_latest_versions("BestSupportVectorClassifier")[0]
+
+        # Load the model
+        model = mlflow.sklearn.load_model(f"models:/BestSupportVectorClassifier/{latest_model_version.version}")
+
+        # Load the scaler artifact
+        scaler_path = mlflow.artifacts.download_artifacts(f"runs:/{latest_model_version.run_id}/scaler/scaler.pkl")
+        scaler = joblib.load(scaler_path)
+
         # Preprocess input data
-        processed_data = preprocess_input(input_data)
+        processed_data = preprocess_input(input_data, scaler)
         
         # Predict using the loaded model
         prediction = model.predict(processed_data)

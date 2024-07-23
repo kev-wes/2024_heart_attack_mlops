@@ -1,0 +1,36 @@
+services:
+  mlflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - mlflow-data:/app/mlflow
+    networks:
+      - network
+
+  prefect:
+    build:
+      context: .
+      dockerfile: Dockerfile.prefect
+    ports:
+      - "4200:4200"
+    environment:
+      - PREFECT_API_URL=http://prefect:4200/api
+    networks:
+      - network
+    
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    ports:
+      - "8000:8000"
+    networks:
+      - network
+
+volumes:
+  mlflow-data:
+networks:
+  network:

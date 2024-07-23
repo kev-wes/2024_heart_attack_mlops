@@ -1,0 +1,20 @@
+# Dockerfile.mlflow
+FROM python:3.11-slim
+
+# Install pipenv
+RUN pip install pipenv
+
+# Set working directory
+WORKDIR /app
+
+# Copy Pipfile and Pipfile.lock
+COPY Pipfile Pipfile.lock /app/
+
+# Install dependencies
+RUN pipenv install --system --deploy
+
+# Expose port 5000 for MLflow
+EXPOSE 5000
+
+# Command to start MLflow server
+CMD ["mlflow", "server", "--backend-store-uri", "sqlite:///mlflow.db", "--default-artifact-root", "./artifacts", "--host", "0.0.0.0", "--port", "5000"]

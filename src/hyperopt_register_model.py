@@ -129,7 +129,7 @@ def main_flow():
     """
 
     # MLflow settings
-    mlflow.set_tracking_uri("http://localhost:5000")  # Set the URI for MLflow tracking server
+    mlflow.set_tracking_uri("http://mlflow:5000")  # Set the URI for MLflow tracking server
     mlflow.set_experiment("heart-attack-hyperopt")  # Set the experiment name
     mlflow.sklearn.autolog()  # Enable automatic logging for sklearn models
 

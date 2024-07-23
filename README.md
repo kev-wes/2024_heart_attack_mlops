@@ -22,6 +22,8 @@
 8. Deploy training flow 'prefect deploy src/hyperopt_register_model.py:main_flow -n train-heart-attack-model -p zoompool'
 9. Start worker 'prefect worker start --pool 'zoompool''
 10. Hyperparam tune, train, and register model 'prefect deployment run 'main-flow/train-heart-attack-model''
+
+###
 11. Start prediction web service 'gunicorn -w 4 -b 0.0.0.0:8000 src.app:app'
 12. Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability 
 
@@ -33,7 +35,6 @@
 
 #### For testing
 1. Unit test: 'pytest tests/unit_test.py'
-2. Integration test: 🚩
 
 ## Project structure explained
 
@@ -47,6 +48,7 @@
 - ✅ Pipfile.lock: Contains the exact versions of all dependencies and their dependencies.
 - ✅ prefect.yaml: Contains the .yaml file that stores this .git location to pull.
 
+- 🚩 Dockerfile: #Dockerfile for training.py (cf. HW4)
 - 🚩 Dockerfile: #Dockerfile for predict.py (cf. HW4)
 
 ### MLflow
@@ -109,8 +111,8 @@
 * Best practices
     * [x] There are unit tests (1 point) 
       * ✅ I created a unit test for data preprocessing. 'tests/unit_test' tests the function 'preprocess_data' that is stored in 'src/helper.py' and is used for training ('hyperopt_register_model.py') and prediction ('app.py').
-    * [x] There is an integration test (1 point) 
-      * 🚩 cf. HW6.4 to 6.6 and video 6.2-6.3. Create integration test for application.
+    * [ ] There is an integration test (1 point) 
+      * I do not use integration tests.
     * [ ] Linter and/or code formatter are used (1 point) 
       * I do not use linter or code formatter.
     * [ ] There's a Makefile (1 point) 
