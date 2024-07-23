@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - mlflow-data:/app/mlflow
+      - mlflow-data:/mlflow
     networks:
       - network
 
