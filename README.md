@@ -19,30 +19,30 @@ This repository showcases the application of MLOps principles to a real-world pr
 ## Instructions for use
 
 ### A. Installation
-1. Pull from GitHub using 'git pull https://github.com/kev-wes/2024_heart_attack_mlops.git'
-2. Move to repo 'cd 2024_heart_attack_mlops'
-3. 'docker-compose build'
-4. 'docker-compose up'
+1. Pull from GitHub using `git pull https://github.com/kev-wes/2024_heart_attack_mlops.git`
+2. Move to repo `cd 2024_heart_attack_mlops`
+3. `docker-compose build`
+4. `docker-compose up`
 
 ### B. Training a Model
-1. Train a model by opening prefect over 'http://localhost:4200/'.
-2. Go to 'Deyploments'
-3. For the deployment 'train-heart-attack-model' start 'Quick run'. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
+1. Train a model by opening prefect over `http://localhost:4200/`.
+2. Go to `Deyploments`
+3. For the deployment `train-heart-attack-model` start `Quick run`. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
 
 ### C. Heart Attack Risk Prediction
-1. __Important: You have to train a model first!__ Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
+1. __Important: You have to train a model first!__ Open `http://localhost:8000/` in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
 
 ### B. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
-2. Create new prefect block with your email address and app password (You can also refer to 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password' for a programmatic solution)
-  a. Open prefect over 'http://localhost:4200/'
-  b. Click on 'Block'
-  - Add block via 'Add Block+'
-  - Choose type 'Email Server Credentials'
-  - Set 'Block Name' to 'gmail'
-  - Input your gmail username via 'Username' and your app password set register in step 1 via 'Password'
-  - Set 'SMPTServer' to 'smtp.gmail.com', 'SMTP Type' to 'SSL', and 'SMTP Port' to '465' 
-3. Monitor dataset ad hoc (you can also create a schedule) by going to 'Deyploments' again. Start a custom run of deployment 'monitor-heart-attack-data-drift'. Set 'recipient' to an email address you want to send the data drift alert to. 
+2. Create new prefect block with your email address and app password (You can also refer to `python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password` for a programmatic solution)
+   - Open prefect over `http://localhost:4200/`
+   - Click on `Block`
+   - Add block via `Add Block+`
+   - Choose type `Email Server Credentials`
+   - Set `Block Name` to `gmail`
+   - Input your gmail username via `Username` and your app password set register in step 1 via `Password`
+   - Set `SMPTServer` to `smtp.gmail.com`, `SMTP Type` to `SSL`, and `SMTP Port` to `465`
+3. Monitor dataset ad hoc (you can also create a schedule) by going to `Deyploments` again. Start a custom run of deployment `monitor-heart-attack-data-drift`. Set `recipient` to an email address you want to send the data drift alert to. 
 
 ## Repository Contents
 
