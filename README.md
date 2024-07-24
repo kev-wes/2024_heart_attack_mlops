@@ -1,13 +1,20 @@
 # Capstone Project for the MLOps Zoomcamp: Predicting Heart Attack Risks
 
-## Legend
-- 🚩 = ToDo
-- 🟠 = WiP
-- ✅ = Implemented fully
-
 ## Problem description
 
-🚩 Lorem ipsum 🚩
+Cardiovascular diseases, including heart attacks, are the leading cause of death globally, claiming millions of lives each year. Early detection and prevention are critical to reducing the mortality rate associated with heart diseases. Despite advancements in medical technology, there remains a significant need for accessible and accurate tools that can predict the risk of heart attacks, enabling timely intervention and potentially saving lives.
+
+To address this pressing issue, I developed a comprehensive heart attack risk prediction service as part of my capstone project for the DataTalksClub MLOps course ('https://github.com/DataTalksClub/mlops-zoomcamp'). This project utilizes a dataset of heart attack risk factors to build and deploy a machine learning model capable of predicting an individual's risk of experiencing a heart attack. The service is designed to be user-friendly and accessible, requiring only 13 input measurements to generate a prediction.
+
+The project leverages state-of-the-art MLOps techniques to ensure robustness, scalability, and maintainability. Key features include:
+
+- __Experiment Tracking and Model Registry__: Hyperparameter tuning and model training are tracked using MLflow, with the best model automatically registered for deployment.
+- __Workflow Orchestration__: Prefect is used to orchestrate workflows, including model training, deployment, and monitoring.
+- __Model Deployment__: The trained model is deployed as a web service using Flask, allowing users to access the prediction service via a web browser.
+- __Model Monitoring__: The service includes comprehensive monitoring to detect data drift and ensure model performance, with alerts sent via email if anomalies are detected.
+- __Reproducibility__ and Best Practices: The project follows best practices in software development, including the use of Docker for containerization, pipenv for dependency management, and unit tests to ensure code quality.
+
+This repository showcases the application of MLOps principles to a real-world problem, providing a valuable tool for predicting heart attack risk and demonstrating the effectiveness of modern machine learning operations.
 
 ## Instructions for use
 
@@ -18,7 +25,7 @@
 4. 'docker-compose up'
 
 ### B. Training a Model
-1. Train a model by opening prefect over 'http://localhost:4200/'
+1. Train a model by opening prefect over 'http://localhost:4200/'.
 2. Go to 'Deyploments'
 3. For the deployment 'train-heart-attack-model' start 'Quick run'. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
 
@@ -27,11 +34,15 @@
 
 ### B. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
-2. Create new prefect block with your email address and app password
-  a. "Block" > "Add Block+" > "Email Server Credentials" > Put "Block Name" = gmail, "Username", "Password", "SMPTServer" = smtp.gmail.com, "SMTP Type" = SSL, "SMTP Port" = 465 (You can also refer to 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password')
-3. Deploy monitoring flow 'prefect deploy src/monitor.py:main_flow -n monitor-heart-attack-data-drift -p zoompool'
-4. Create a schedule or monitor dataset ad hoc (input parameter recipient email)
-
+2. Create new prefect block with your email address and app password (You can also refer to 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password' for a programmatic solution)
+  - Open prefect over 'http://localhost:4200/'
+  - Click on 'Block'
+  - Add block via 'Add Block+'
+  - Choose type 'Email Server Credentials'
+  - Set 'Block Name' to 'gmail'
+  - Input your gmail username via 'Username' and your app password set register in step 1 via 'Password'
+  - Set 'SMPTServer' to 'smtp.gmail.com', 'SMTP Type' to 'SSL', and 'SMTP Port' to '465' 
+3. Monitor dataset ad hoc (you can also create a schedule) by going to 'Deyploments' again. Start a custom run of deployment 'monitor-heart-attack-data-drift'. Set 'recipient' to an email address you want to send the data drift alert to. 
 
 ## Project structure explained
 
@@ -46,13 +57,13 @@
   - __helper.py__: The code defines a data preprocessing pipeline for a machine learning project using Prefect for workflow management. It includes tasks for reading a dataset, removing duplicates, splitting features and targets, splitting data into training and testing sets, and scaling features using standardization. 
   - __app.py__: Hosts a Flask prediction web service over http://localhost:8000/. Takes the best model registered before and uses it for prediction.
   - __templates/__: Stores the template used by the Flask app.
-    - __ndex.html__: Simple web form for heart attack risk prediction.
+    - __index.html__: Simple web form for heart attack risk prediction.
   - __monitor.py__: Calculates metrics between current data (data/heart.csv) and reference data set (data/reference.csv) and sends out email.
   - __create_email_block.py__: Python helper to create a prefect email block to send monitoring alerts.
 
 ### Tests
 - __tests/__: Contains a unit and an integration test.
-  - __\_\_init__.py__: init file for testing.
+  - __\_\_init\_\_.py__: init file for testing.
   - __unit_test.py__: Unit tests for data preprocessing. Tests the function 'preprocess_data' that is stored in src/helper.py and is used for training (hyperopt_register_model.py) and prediction (app.py).
 
 ### Environment
