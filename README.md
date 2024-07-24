@@ -23,7 +23,7 @@
 3. For the deployment 'train-heart-attack-model' start 'Quick run'. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
 
 ### C. Heart Attack Risk Prediction
-1. Important: You have to train a model first! Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
+1. __Important__: You have to train a model first! Open 'http://localhost:8000/' in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
 
 ### B. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
@@ -52,7 +52,7 @@
 
 ### Tests
 - tests/: Contains a unit and an integration test.
-  - __init__.py: init file for testing.
+  - \__init__.py: init file for testing.
   - unit_test.py: Unit tests for data preprocessing. Tests the function 'preprocess_data' that is stored in src/helper.py and is used for training (hyperopt_register_model.py) and prediction (app.py).
 
 ### Environment
