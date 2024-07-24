@@ -35,8 +35,8 @@ This repository showcases the application of MLOps principles to a real-world pr
 ### B. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
 2. Create new prefect block with your email address and app password (You can also refer to 'python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password' for a programmatic solution)
-  1. Open prefect over 'http://localhost:4200/'
-__- Click on 'Block'
+  a. Open prefect over 'http://localhost:4200/'
+  b. Click on 'Block'
   - Add block via 'Add Block+'
   - Choose type 'Email Server Credentials'
   - Set 'Block Name' to 'gmail'
