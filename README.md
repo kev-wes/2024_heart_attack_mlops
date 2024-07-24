@@ -12,7 +12,7 @@ The project leverages state-of-the-art MLOps techniques to ensure robustness, sc
 - __Workflow Orchestration__: Prefect is used to orchestrate workflows, including model training, deployment, and monitoring.
 - __Model Deployment__: The trained model is deployed as a web service using Flask, allowing users to access the prediction service via a web browser.
 - __Model Monitoring__: The service includes comprehensive monitoring to detect data drift and ensure model performance, with alerts sent via email if anomalies are detected.
-- __Reproducibility__ and Best Practices: The project follows best practices in software development, including the use of Docker for containerization, pipenv for dependency management, and unit tests to ensure code quality.
+- __Reproducibility and Best Practices__: The project follows best practices in software development, including the use of Docker for containerization, pipenv for dependency management, and unit tests to ensure code quality.
 
 This repository showcases the application of MLOps principles to a real-world problem, providing a valuable tool for predicting heart attack risk and demonstrating the effectiveness of modern machine learning operations.
 
