@@ -30,5 +30,6 @@ CMD ["sh", "-c", "\
   sleep 10 && \
   (prefect work-pool inspect zoompool || prefect work-pool create --type process zoompool) && \
   prefect deploy src/hyperopt_register_model.py:main_flow -n train-heart-attack-model -p zoompool && \
+  prefect deploy src/monitor.py:main_flow -n monitor-heart-attack-data-drift -p zoompool && \
   prefect worker start --pool 'zoompool' \
 "]
