@@ -52,7 +52,7 @@
 
 ### Tests
 - tests/: Contains a unit and an integration test.
-  - \__init__.py: init file for testing.
+  - \_\_init__.py: init file for testing.
   - unit_test.py: Unit tests for data preprocessing. Tests the function 'preprocess_data' that is stored in src/helper.py and is used for training (hyperopt_register_model.py) and prediction (app.py).
 
 ### Environment
