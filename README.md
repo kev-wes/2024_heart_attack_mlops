@@ -1,6 +1,6 @@
 # Capstone Project for the MLOps Zoomcamp: Predicting Heart Attack Risks
 
-## Problem description
+## Problem statement
 
 Cardiovascular diseases, including heart attacks, are the leading cause of death globally, claiming millions of lives each year. Early detection and prevention are critical to reducing the mortality rate associated with heart diseases. Despite advancements in medical technology, there remains a significant need for accessible and accurate tools that can predict the risk of heart attacks, enabling timely intervention and potentially saving lives.
 
@@ -44,7 +44,7 @@ This repository showcases the application of MLOps principles to a real-world pr
   - Set 'SMPTServer' to 'smtp.gmail.com', 'SMTP Type' to 'SSL', and 'SMTP Port' to '465' 
 3. Monitor dataset ad hoc (you can also create a schedule) by going to 'Deyploments' again. Start a custom run of deployment 'monitor-heart-attack-data-drift'. Set 'recipient' to an email address you want to send the data drift alert to. 
 
-## Project structure explained
+## Repository Contents
 
 ### Data
 - __data/__: Contains all data.
@@ -83,7 +83,7 @@ This repository showcases the application of MLOps principles to a real-world pr
     * [ ] 0 points: The problem is not described
     * [ ] 1 point: The problem is described but shortly or not clearly 
     * [x] 2 points: The problem is well described and it's clear what the problem the project solves
-      * 🚩 Describe problem well
+      * I provided an in-depth problem statement, instructions for use, and explained the repository structure.
 * __Cloud__
     * [x] 0 points: Cloud is not used, things run only locally
       * Everything is hosted locally on an ubuntu server. It can be hosted anywhere on premise and can be accessed outside through the hosted web services, but it does not use cloud or IaC tools.
