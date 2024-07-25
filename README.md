@@ -26,13 +26,13 @@ This repository showcases the application of MLOps principles to a real-world pr
 
 ### B. Training a Model
 1. Train a model by opening prefect over `http://localhost:4200/`.
-2. Go to `Deyploments`
+2. Go to `Deployments`
 3. For the deployment `train-heart-attack-model` start `Quick run`. Now a hyperparameter tuning is performed and the best model is registered via MLflow.
 
 ### C. Heart Attack Risk Prediction
 1. __Important: You have to train a model first!__ Open `http://localhost:8000/` in your browser. Now you can input your health data an it returns the probability of increased heart attack risk using your best trained model.
 
-### B. Monitoring Data Drift (only Gmail for sending supported!)
+### D. Monitoring Data Drift (only Gmail for sending supported!)
 1. Register app password under https://myaccount.google.com/apppasswords
 2. Create new prefect block with your email address and app password (You can also refer to `python src/create_email_block.py --sender your_email@gmail.com --sender_password your_gmail_app_password` for a programmatic solution)
    - Open prefect over `http://localhost:4200/`
