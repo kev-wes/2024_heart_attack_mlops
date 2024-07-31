@@ -19,10 +19,11 @@ This repository showcases the application of MLOps principles to a real-world pr
 ## Instructions for use
 
 ### A. Installation
-1. Pull from GitHub using `git pull https://github.com/kev-wes/2024_heart_attack_mlops.git`
-2. Move to repo `cd 2024_heart_attack_mlops`
-3. `docker-compose build`
-4. `docker-compose up`
+1. Install Git and Docker-compose
+2. Pull from GitHub using `git clone https://github.com/kev-wes/2024_heart_attack_mlops.git`
+3. Move to repo `cd 2024_heart_attack_mlops`
+4. `docker-compose build`
+5. `docker-compose up`
 
 ### B. Training a Model
 1. Train a model by opening prefect over `http://localhost:4200/`.
